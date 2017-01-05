@@ -31,7 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="@string/click_me" />
+        android:text="Ejercicio3"
+        android:onClick="launchActivity" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,10 +48,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextMesAño"
-        android:layout_marginTop="30dp"
-        android:text="Ingrese Numero del Mes"
+        android:inputType="number"
         android:layout_below="@+id/textViewEj1"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="Ingrese Numero del Mes"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -59,4 +60,69 @@
         android:id="@+id/monthButton"
         android:layout_below="@+id/editTextMesAño"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ejercicio 2"
+        android:id="@+id/texdtViewEj2"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textViewEj1"
+        android:layout_alignStart="@+id/textViewEj1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextPrimOp"
+        android:layout_below="@+id/texdtViewEj2"
+        android:layout_toLeftOf="@+id/texdtViewEj2"
+        android:layout_toStartOf="@+id/texdtViewEj2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/editTextSegOp"
+        android:layout_below="@+id/editTextPrimOp"
+        android:layout_toLeftOf="@+id/operacionButton"
+        android:layout_toStartOf="@+id/operacionButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextTercOp"
+        android:layout_above="@+id/operacionButton"
+        android:layout_toLeftOf="@+id/clickMeButton"
+        android:layout_toStartOf="@+id/clickMeButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        android:id="@+id/textViewEquals"
+        android:layout_above="@+id/editTextTercOp"
+        android:layout_toRightOf="@+id/clickMeButton"
+        android:layout_toEndOf="@+id/clickMeButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Realizar Operacion"
+        android:id="@+id/operacionButton"
+        android:layout_above="@+id/clickMeButton"
+        android:layout_alignLeft="@+id/monthButton"
+        android:layout_alignStart="@+id/monthButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewResultado"
+        android:layout_alignTop="@+id/textViewEquals"
+        android:layout_toRightOf="@+id/editTextMesAño"
+        android:layout_toEndOf="@+id/editTextMesAño" />
+
 </RelativeLayout>

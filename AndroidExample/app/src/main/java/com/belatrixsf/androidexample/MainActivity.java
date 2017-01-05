@@ -1,5 +1,6 @@
 package com.belatrixsf.androidexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,12 +11,13 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int counter = 0;
-
     private TextView messageTextView;
     private EditText monthYearEditText;
-    private String monthEntrance;
     private int monthNumber;
+    private EditText primerOperando;
+    private EditText segundoOperando;
+    private EditText tercerOperando;
+    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         monthYearEditText = (EditText) findViewById(R.id.editTextMesAño);
         final Button obtainMonthButton = (Button) findViewById(R.id.monthButton);
 
-        clickMeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exampleTextView.setText("Counter: " + (++counter));
-                updateMessage(true);
-            }
-        });
+        primerOperando = (EditText) findViewById(R.id.editTextPrimOp);
+        segundoOperando = (EditText) findViewById(R.id.editTextSegOp);
+        tercerOperando = (EditText) findViewById(R.id.editTextTercOp);
+        result = (TextView) findViewById(R.id.textViewResultado);
+        final Button operacionButton = (Button) findViewById(R.id.operacionButton);
+
+        final Button nextActivity = (Button) findViewById(R.id.clickMeButton);
+
 
         obtainMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,34 +47,50 @@ public class MainActivity extends AppCompatActivity {
                     getMonthYear(monthNumber);
             }
         });
+
+        operacionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    getOperationResult(primerOperando, segundoOperando, tercerOperando);
+            }
+        });
     }
 
-    /**
-     * This method updates the text on messageTextView.
-     *
-     * @param switchExample
-     */
-    private void updateMessage(boolean switchExample) {
-        if (switchExample) {
-            switch (counter) {
-                case 1:
-                    messageTextView.setText("One");
-                    break;
-                case 2:
-                    messageTextView.setText("Double counter!");
-                    break;
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                    messageTextView.setText("Counting...");
-                case 7:
-                    messageTextView.setText("Seven!!!!!");
-                default:
-                    messageTextView.setText("Too much!!!!");
-            }
-        } else {
 
+    public void launchActivity(View v){
+        Intent i = new Intent(this, Ejercicio2Activity.class);
+        startActivity(i);
+    }
+
+
+    //Metodo para realizar la operacion de dos numeros, mas las operaciones de +, -, * o / segun se introduzca
+    private void getOperationResult(EditText primOp, EditText segunOp, EditText tercOp) {
+        String suma = "+";
+        Double resultOperacion;
+        Double numero1 = Double.parseDouble(primOp.getText().toString());
+        Double numero2 = Double.parseDouble(tercOp.getText().toString());
+        if (segunOp.getText().toString() == suma) {
+            resultOperacion = numero1 + numero2;
+            result.setText(resultOperacion.toString());
+        } else {
+            if (segunOp.getText().toString() == "-") {
+                resultOperacion = numero1 - numero2;
+                result.setText(resultOperacion.toString());
+            } else {
+                if (segunOp.getText().toString() == "*") {
+                    resultOperacion = numero1 * numero2;
+                    result.setText(resultOperacion.toString());
+                } else {
+                    if (segunOp.getText().toString() == "/") {
+                        resultOperacion = numero1 / numero2;
+                        result.setText(resultOperacion.toString());
+                    } else {
+                        Toast m1 = Toast.makeText(this, "Ingrese un operando valido de operacion", Toast.LENGTH_SHORT);
+                        m1.show();
+                        ;
+                    }
+                }
+            }
         }
     }
 
@@ -85,28 +104,39 @@ public class MainActivity extends AppCompatActivity {
             switch (monthNumber) {
                 case 1:
                     monthYearEditText.setText("Enero");
+                    break;
                 case 2:
                     monthYearEditText.setText("Febrero");
+                    break;
                 case 3:
                     monthYearEditText.setText("Marzo");
+                    break;
                 case 4:
                     monthYearEditText.setText("Abril");
+                    break;
                 case 5:
                     monthYearEditText.setText("Mayo");
+                    break;
                 case 6:
                     monthYearEditText.setText("Junio");
                 case 7:
                     monthYearEditText.setText("Julio");
+                    break;
                 case 8:
                     monthYearEditText.setText("Agosto");
+                    break;
                 case 9:
                     monthYearEditText.setText("Septiembre");
+                    break;
                 case 10:
                     monthYearEditText.setText("Octubre");
+                    break;
                 case 11:
                     monthYearEditText.setText("Noviembre");
-                default:
+                    break;
+                case 12:
                     monthYearEditText.setText("Diciembre");
+                    break;
             }
         }
     }
