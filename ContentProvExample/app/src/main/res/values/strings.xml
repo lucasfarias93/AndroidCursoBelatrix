@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ContentProvExample</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="consultar">Check</string>
+    <string name="insertar">Insert</string>
+    <string name="eliminar">Delete</string>
+    <string name="llamadas">Calls</string>
+</resources>
